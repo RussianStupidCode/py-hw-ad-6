@@ -16,13 +16,13 @@ def make_directory(dir_path, token=TOKEN):
     resp = requests.put(f'{BASE_URL}/resources', headers={'Authorization': token}, params=params)
 
     text = resp.json()
-    if resp.status_code != 201 and text['message'] != 'Директория с таким именем уже существует':
+    if resp.status_code != 201 and text['message'] != 'По указанному пути "new_dir" уже существует папка с таким именем.':
         raise ValueError(text['message'])
     return 'Директория создана успешно'
 
 
-def is_dir_exist(dir_path,token=TOKEN):
-    params = {'path': 'dir_path'}
+def is_dir_exist(dir_path, token=TOKEN):
+    params = {'path': dir_path}
     resp = requests.get(f'{BASE_URL}/resources', headers={'Authorization': token}, params=params)
     if resp.status_code != 200:
         return False

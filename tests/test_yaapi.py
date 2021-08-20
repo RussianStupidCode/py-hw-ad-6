@@ -14,7 +14,7 @@ def test_new_dir():
     assert yaapi.is_dir_exist('new_dir')
 
 
-def test_new_dir():
+def test_error_path():
     try:
         expected = yaapi.make_directory('/qqq/new_dir')
     except ValueError as er:
